@@ -30,15 +30,15 @@ end
 def destroy
 	@blog_post.destroy
 	respond_to do |format|
-		format.html {redirect_to blog_posts_path(id: @comment.blog_post_id), notice: "Your blog post was DESTROYED!!!"}
+		format.html {redirect_to blog_post_path(id: @comment.blog_post_id), notice: "Your blog post was DESTROYED!!!"}
 	end
 end
 
 private 
 
 def comment_params
-	params.require(:comment).permit(:author, comment_enty, :blog_post_id)
-
+	params.require(:comment).permit(:author, :comment_entry, :blog_post_id)
+ 
 end
 
 def set_comment

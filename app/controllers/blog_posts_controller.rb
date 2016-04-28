@@ -1,4 +1,4 @@
-gclass BlogPostsController < ApplicationController
+class BlogPostsController < ApplicationController
 	before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
 
 
@@ -11,9 +11,11 @@ gclass BlogPostsController < ApplicationController
   end
 
   def edit
+    # @blog_post = BlogPost.find(params[:id])  ### in the top already before action
   end
 
   def show
+    @comment = Comment.new
   	
   end
 
@@ -37,8 +39,8 @@ gclass BlogPostsController < ApplicationController
   		else
   			format.html {render :edit}
   		end
+    end
   end
-end
 
 def destroy
 	@blog_post.destroy

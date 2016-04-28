@@ -1,1 +1,10 @@
-S
+<% @blog_post.comments.each do |comment| %>
+
+	<h4><%= comment.author %></h4>
+
+	<p><%= comment.comment_entry %></p>
+
+	
+<% end %>
+
+<%= link_to 'Edit', edit_comment_path, class: "btn btn-default" %>

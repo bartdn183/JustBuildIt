@@ -1,2 +1,46 @@
-<h1>BlogPosts#index</h1>
-<p>Find me in app/views/blog_posts/index.html.erb</p>
+<div class="row">
+
+<div class="col-lg-6 col-lg-offset-3">
+<h1>My Personal Blog</h1>
+
+
+
+
+	<% @blog_posts.each do |blog_post| %>  <!-- ###all blog posts selected to print out -->	
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="heading">
+						<%= blog_post.title  %>  <!-- #no @add because from the block -->
+					</div>
+				</div>
+			
+				<div class="panel-body">
+					<div class="author">
+						by <%= blog_post.author %><br />
+					</div>
+
+						<p><%= blog_post.blog_entry %></p>
+						<a href="blog">Continue</a>"
+
+						<p><strong>created at:</strong> <%= blog_post.created_at %></p>
+				</div>
+
+			<div class="panel-footer">
+				<%= link_to 'Show', blog_post, class: "btn btn-primary" %>  <!-- ### no path because you have to perform specific instance like show and detroy -->
+				<%= link_to 'Edit', edit_blog_post_path(blog_post), class: "btn btn-warning" %> <!--  ###(blog_post) .. ID blog post... -->
+				<%= link_to 'Destroy', blog_post, method: :delete,	data: {confirm: 'Are you sure?' }, class: "btn btn-danger" %>			<!-- ###linked to GET ...There is no destroy page like Edit...so we need to use a method Delete -->
+			</div>
+ 
+		</div>
+
+	<% end %>
+
+<br />
+<%= link_to 'New Blog Post', new_blog_post_path, class: "btn btn-default" %>
+</div>
+</div>
+
+
+<!-- truncate("Once upon a time in a world far far away") { link_to "Continue", "#" }
+# => "Once upon a time in a wo...<a href="#">Continue</a>" -->

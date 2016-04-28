@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :blog_posts
-  resources :comments, only: [:edit]
+  resources :comments, only: [:edit, :create, :update, :destroy]
 
 
   # get 'blog_posts/index' DELETE

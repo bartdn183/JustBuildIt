@@ -1,0 +1,40 @@
+	<%= form_for(@blog_post) do |f| %>
+	<% if @blog_post.errors.any? %>
+		<div class="error_explanation">
+			<h2><%= pluralize(@blog_post.errors.count, "error") %> prohibited this blog post form being saved:</h2>
+
+			<ul>
+			<% @blog_post.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+
+				<div class="formgroup">
+					<%= f.text_field :title, class: "form-control", placeholder: "Enter your cool blog post name here..." %>
+				</div>
+				
+				<div class="formgroup">
+					<%= f.text_field :author, class: 'form-control', placeholder: "Enter your name" %>
+
+				</div>
+			</div>
+
+			<div class="panel-body">
+				<div class="formgroup">
+					<%= f.text_area :blog_entry, class: 'form-control', rows: "12", placeholder: "Start typing away..." %>
+
+				</div>
+			</div>
+		</div>
+
+	<div class="actions">
+		<%= f.submit "Post", class: "btn btn-default" %>
+	</div>
+	
+	<% end %>
+	
